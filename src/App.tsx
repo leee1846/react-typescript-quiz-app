@@ -3,6 +3,8 @@ import QuestionCard from "./components/questionCard/QuestionCard";
 import { fetchQuizQuestions } from "./api/API";
 //TYPES
 import { Difficulty, QuestionState } from "./api/API";
+//style
+import { GlobalStyle } from "./App.style";
 
 export type AnswerObject = {
   question: string;
@@ -69,6 +71,7 @@ function App() {
 
   return (
     <div>
+      <GlobalStyle />
       <h1>REACT QUIZ</h1>
       {(gameOver || userAnswers.length === TOTAL_QUESTIONS) && (
         <button onClick={startTrivia}>Start</button>
