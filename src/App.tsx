@@ -42,7 +42,6 @@ function App() {
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
 
   const nextQuestion = () => {};
-  console.log(gameOver);
   return (
     <div>
       <h1>REACT QUIZ</h1>
@@ -61,7 +60,12 @@ function App() {
           callback={checkAnswer}
         />
       )}
-      <button onClick={nextQuestion}>Next Question</button>
+      {!gameOver &&
+      !loading &&
+      userAnswers.length === number + 1 &&
+      number !== TOTAL_QUESTIONS - 1 ? (
+        <button onClick={nextQuestion}>Next Question</button>
+      ) : null}
     </div>
   );
 }
