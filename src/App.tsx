@@ -42,21 +42,25 @@ function App() {
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
 
   const nextQuestion = () => {};
-
+  console.log(gameOver);
   return (
     <div>
       <h1>REACT QUIZ</h1>
-      <button onClick={startTrivia}>Start</button>
-      <p>Score : </p>
-      <p>Loading Questions ...</p>
-      {/* <QuestionCard
-        questionNumber={number + 1}
-        totalQuestions={TOTAL_QUESTIONS}
-        question={questions[number].question}
-        answers={questions[number].answers}
-        userAnswer={userAnswers ? userAnswers[number] : undefined}
-        callback={checkAnswer}
-      /> */}
+      {(gameOver || userAnswers.length === TOTAL_QUESTIONS) && (
+        <button onClick={startTrivia}>Start</button>
+      )}
+      {!gameOver && <p>Score : </p>}
+      {loading && <p>Loading Questions ...</p>}
+      {!loading && !gameOver && (
+        <QuestionCard
+          questionNumber={number + 1}
+          totalQuestions={TOTAL_QUESTIONS}
+          question={questions[number].question}
+          answers={questions[number].answers}
+          userAnswer={userAnswers ? userAnswers[number] : undefined}
+          callback={checkAnswer}
+        />
+      )}
       <button onClick={nextQuestion}>Next Question</button>
     </div>
   );
