@@ -73,7 +73,7 @@ function App() {
       {(gameOver || userAnswers.length === TOTAL_QUESTIONS) && (
         <button onClick={startTrivia}>Start</button>
       )}
-      {!gameOver && <p>Score : </p>}
+      {!gameOver && <p>Score : {score}</p>}
       {loading && <p>Loading Questions ...</p>}
       {!loading && !gameOver && (
         <QuestionCard
